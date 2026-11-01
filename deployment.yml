@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  labels:
+    app: spring-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: snk6182/springboot-maven-poc:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
